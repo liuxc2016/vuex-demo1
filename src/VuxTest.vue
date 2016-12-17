@@ -1,27 +1,27 @@
 <template>
-  <div id="app">
-    <mt-header fixed title="流光音乐盒"></mt-header>
-    <mt-swipe :show-indicators="false" :auto="swipeAuto">
-      <mt-swipe-item><img src="./assets/slide/1.jpg" style="height:290px;"></mt-swipe-item>
-      <mt-swipe-item><img src="./assets/slide/2.jpg"></mt-swipe-item>
-    </mt-swipe>
-    <h3>顶部栏</h3>
-    <router-link to="/home">home</router-link>
-    <router-link to="/login">login</router-link>
-    <router-link to="/signout">signout</router-link>
-   <router-view></router-view>
-   <h3>底部栏</h3>   
+  <div id="vux-test">
+
+    <h1>{{ msg }}</h1>
+    <hr>
+    <label for="input">Computer绑定的A</label><input type="text" v-model="a"><br>
+    <label for="inputb">Computer绑定的B</label><input type="text" v-model="b"><br>
+    <input type="text" :value="count">
+    <button @click="addIt">+++</button> <button @click="subIt">---</button>
+    <hr>
+    <button @click="actAdd">基于actionthis.$store.dispatch </button>
+   
+    <hr>
+    <input type="text" :value="overCount">
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 export default {
-  name: 'app',
+  name: 'vuxText',
   data () {
     return {
-      swipeAuto: 4000,
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
       
     }
   },
@@ -62,8 +62,8 @@ export default {
 }
 </script>
 
-<style scope>
-#app {
+<style>
+#vux-test {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -91,8 +91,5 @@ a {
 }
 #pageContainer{
   border:1px solid #0ff;
-}
-.mint-swipe{
-  height: 290px!important;
 }
 </style>
