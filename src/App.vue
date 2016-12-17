@@ -10,7 +10,9 @@
     <router-link to="/login">登陆页面</router-link>
     <router-link to="/home/signout">退出登陆</router-link>
     <div id="main-container">
-      <router-view></router-view>
+      <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutRight">
+        <router-view></router-view>
+      </transition>
     </div>
    
    <div id="bottom" style="display:none">
