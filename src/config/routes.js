@@ -5,28 +5,30 @@ import Home from "../components/home.vue"
 
 
 export default [
+	
 	{
-		path: '/v' ,
-		component: App,
+		path: '/login',
+		meta:{
+			auth:false
+		},
+		component: Login,
+
+	},
+	{
+		path: '/home',
+		meta:{
+			auth: true
+		},
+		component: Home,
 		children: [
 			{
-				path: "login",   //登陆页面
-				component: Login
-
-			},
-			{
 				path: "signout",  //退出登陆
+				meta:{
+					auth:false
+				},
 				component: Signout
-			},
-			{
-				path: "home",  //个人首页
-				component: Home
-			},
-			{
-				path: "",  //个人首页
-				component: Home
 			}
 		]
-	}
+	},
 
 ]

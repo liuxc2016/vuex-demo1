@@ -6,11 +6,33 @@
       <mt-swipe-item><img src="./assets/slide/2.jpg"></mt-swipe-item>
     </mt-swipe>
     <h3>顶部栏</h3>
-    <router-link to="/home">home</router-link>
-    <router-link to="/login">login</router-link>
-    <router-link to="/signout">signout</router-link>
-   <router-view></router-view>
-   <h3>底部栏</h3>   
+    <router-link to="/home">个人主页</router-link>
+    <router-link to="/login">登陆页面</router-link>
+    <router-link to="/home/signout">退出登陆</router-link>
+    <div id="main-container">
+      <router-view></router-view>
+    </div>
+   
+   <div id="bottom" style="display:none">
+     <mt-tabbar v-model="selected">
+      <mt-tab-item id="外卖">
+        <img slot="icon" src="./assets/icon1.png">
+        外卖
+      </mt-tab-item>
+      <mt-tab-item id="订单">
+        <img slot="icon" src="./assets/icon1.png">
+        订单
+      </mt-tab-item>
+      <mt-tab-item id="发现">
+        <img slot="icon" src="./assets/icon1.png">
+        发现
+      </mt-tab-item>
+      <mt-tab-item id="我的">
+        <img slot="icon" src="./assets/icon1.png">
+        我的
+      </mt-tab-item>
+    </mt-tabbar>
+   </div>  
   </div>
 </template>
 
@@ -20,6 +42,7 @@ export default {
   name: 'app',
   data () {
     return {
+      selected: 1,
       swipeAuto: 4000,
       msg: 'Welcome to Your Vue.js App'
       

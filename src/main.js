@@ -19,17 +19,27 @@ const router = new VueRouter({
 	routes
 })
 
-//方案一
-const app = new Vue({
-    el: '#app',
-    router,
-    store,
-    render: h => h(App)
-}).$mount('#app')
 
-app.$route.push("/v")
+router.beforeEach(({meta, path}, from, next) => {
+    var { auth = true } = meta
+    var isLogin = store.state.user.id //true用户已登录， false用户未登录
+    console.log(isLogin);
+    if (auth && !isLogin && path!="/") {
+        return next({ path: '/login' })
+    }
+    next()
+})
+
+//方案一
+// const app = new Vue({
+//     router,
+//     store,
+//     render: h => h(App)
+// }).$mount('#app')
+
+// console.log(app.$route)
 
 //方案二
-// const app = new Vue({ store, router }).$mount('#app')
+const app = new Vue({ store, router, render: h => h(App) }).$mount('#app')
 
 
