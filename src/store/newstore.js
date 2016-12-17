@@ -24,5 +24,10 @@ export default new Vuex.Store({
 		increment: state => state.count++,
 		decrement: state => state.count--,
 		addTwoSideCount: (state, msg) => state.twoSideCount = msg 
+	},
+	actions: {
+		actIncrement(context, val){
+			context.commit('increment')
+		}
 	}
 })

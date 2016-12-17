@@ -7,6 +7,8 @@
     <label for="inputb">Computer绑定的B</label><input type="text" v-model="b"><br>
     <input type="text" :value="count">
     <button @click="addIt">+++</button> <button @click="subIt">---</button>
+    <hr>
+    <button @click="actAdd">基于actionthis.$store.dispatch </button>
 
     
     <hr>
@@ -30,10 +32,9 @@ export default {
   // ]),
   computed: {
     a(){
-      return 111
+      return 111 + Date()
     },
     b:{ 
-      
         get(){
           return this.$store.state.twoSideCount
         },
@@ -54,6 +55,9 @@ export default {
     },
     subIt: function(){
       this.$store.commit('decrement')
+    },
+    actAdd: function(){
+      this.$store.dispatch('actIncrement', {amount: 1})
     }
   }
 }
